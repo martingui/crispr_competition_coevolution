@@ -25,7 +25,7 @@ This folder contains all scripts used to analyse the processed sequencing data f
 
 ### temporal_adapt.py
   
-  Figure 6_2 and S8
+  Figure 6_2 and S9
   
 
 ### nfds.py
@@ -40,7 +40,7 @@ This folder contains all scripts used to analyse the processed sequencing data f
 
 ### along_protospacer.py
   
-  Figure S5
+  Figure S5 and S6
   
 
 ### D_heterozy.py
@@ -55,7 +55,7 @@ This folder contains all scripts used to analyse the processed sequencing data f
 
 ### escape_noescape.py
   
-  Figure S7
+  Figure S8
   
 
 ### fitness_day_1.py
@@ -70,11 +70,11 @@ This folder contains all scripts used to analyse the processed sequencing data f
 
 ### fst.py
   
-  Figure S4_1 and S6
+  Figure S4_1 and S7
   
 
 ### 16_acqusitions.py
   
-  Figure S9
+  Figure S10
   
 

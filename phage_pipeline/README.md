@@ -157,6 +157,11 @@ Comment field for FASTA format. No strict rules. I used Definition=Value without
 * **Protospacer_length** = The lenght of sequence concidered to be a protospacer without the lenght of the PAM.
 
 
+### Escape_regions.R
+
+Uses the output of get_PAM.py to produce a file with the positions of all PAMS: PAM_positions.csv
+
+
 ### requirements_py-env.txt
 
 File used by the script `00_create_py_env.sh`
