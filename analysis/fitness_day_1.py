@@ -62,7 +62,7 @@ plt.plot([0,0],[1.05,2.5], 'k')
 plt.text(0, 2.7, 'Susceptible strain', ha='center')
 plt.ylabel('Number of strain')
 plt.xlabel('Fitness')
-plt.savefig('../steps/fitness/fitness_day1.png', dpi=300)
+plt.savefig('../steps/fitness/fitness_day1.pdf')
 
 dic_color={}
 for i in range(16):
@@ -72,7 +72,7 @@ dic_color[0]='grey'
 
 def getxy(i):
     i=15-i
-    Z=0.007
+    Z=-0.005
     if i in [0,1,2,3,4,7,10,12,13,15]:
         y=0.5
     if i in[5,8,11,14]:
@@ -128,10 +128,10 @@ sns.despine()
 
 for i in range(len(myorder)-1,-1,-1):
     print(i)
-    plt.text(getxy(i)[0], getxy(i)[1],myorder[i], rotation=270, ha='center',va='center')
-plt.savefig('../steps/fitness/fitness_day1_color.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S1_labels.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S1.png', dpi=300, bbox_inches='tight')
+    plt.text(getxy(i)[0], getxy(i)[1],myorder[i], rotation=90, ha='center',va='center')
+plt.savefig('../steps/fitness/fitness_day1_color.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S1_labels.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S1.pdf', bbox_inches='tight')
 
 
 

@@ -5,8 +5,9 @@ import numpy as np
 import seaborn as sns
 import math
 import copy
+import scipy
 os.chdir('/home/guillemet/Documents/crispr/work/Martin/scripts')
-
+colors= sns.color_palette()
 bacter_all=pd.read_csv('../data/Bacteria_genos_filled.csv', sep=',', header=0, index_col=0)
 
 

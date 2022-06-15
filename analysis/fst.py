@@ -167,8 +167,8 @@ plt.ylim(-0.02,0.6)
 sns.despine()
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Fst/jk_fst_phage_ppt.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S7_1.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Fst/jk_fst_phage_ppt.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S6_1.pdf', bbox_inches='tight')
 
 
 df_fst_phage_all=pd.read_csv('../steps/Fst/jk_qst_phage_rw.csv')
@@ -184,8 +184,8 @@ plt.ylim(-0.02,0.6)
 sns.despine()
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Fst/jk_qst_phage_ppt.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S7_2.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Fst/jk_qst_phage_ppt.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S6_2.pdf', bbox_inches='tight')
 
 
 def fst_bacteria_jk(bact=bacter_all, toremove=-1):
@@ -297,6 +297,6 @@ plt.ylim(-0.03,0.75)
 sns.despine()
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Fst/ajk_bact_ppt_nod.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S4_1.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Fst/ajk_bact_ppt_nod.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S4_1.pdf', bbox_inches='tight')
 

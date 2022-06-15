@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 os.chdir('/home/guillemet/Documents/crispr/work/Martin/scripts')
 colors= sns.color_palette()
-Phages = pd.read_csv("../data/Phages.csv")
-Bacteria = pd.read_csv("../data/Bacteria.csv")
+Phages = pd.read_csv("../data/Phages_density.csv")
+Bacteria = pd.read_csv("../data/Bacteria_density.csv")
 Phages.loc[Phages.Time==0, 'Phages']=Phages.loc[Phages.Time==0, 'Phages']/10
 Bacteria.loc[Bacteria.Time==0, 'Bacteries']=Bacteria.loc[Bacteria.Time==0, 'Bacteries']/10
 
@@ -45,8 +45,8 @@ ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 sns.despine()
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Demography/bacteria_demo_ppt.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/2_1.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Demography/bacteria_demo_ppt.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/2_1.pdf', bbox_inches='tight')
 
 
 plt.figure()
@@ -70,5 +70,5 @@ ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 sns.despine()
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Demography/phages_demo_ppt_nod.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/2_2.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Demography/phages_demo_ppt_nod.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/2_2.pdf', bbox_inches='tight')

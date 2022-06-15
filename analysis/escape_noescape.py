@@ -142,7 +142,7 @@ plt.bar([(x/10)+0.005 for x in range(0,10)], freq, width=0.09, align="edge", ec=
 plt.ylim(0,0.7)
 plt.text(0.4,0.6,str(hist.sum())+" mutations")
 plt.title('non-escape D')
-plt.savefig('../steps/mutations/D_non_escape.png', dpi=300)
+plt.savefig('../steps/mutations/D_non_escape.pdf')
 
 
 oldhist, edges = np.histogram(df.FREQ, [x/10 for x in range(0,11)])
@@ -157,7 +157,7 @@ plt.ylim(0,0.7)
 hist, edges = np.histogram(df.FREQ, [x/10 for x in range(0,11)])
 plt.text(0.4,0.6,str(oldhist.sum())+" mutations")
 plt.title('non-escape D')
-plt.savefig('../steps/mutations/D_non_escape_cr3.png', dpi=300)
+plt.savefig('../steps/mutations/D_non_escape_cr3.pdf')
 
 
 hist, edges = np.histogram(df1.FREQ, [x/10 for x in range(0,11)])
@@ -167,7 +167,7 @@ plt.bar([(x/10)+0.005 for x in range(0,10)], freq, width=0.09, align="edge", ec=
 plt.ylim(0,0.7)
 plt.text(0.4,0.6,str(hist.sum())+" mutations")
 plt.title('escape D')
-plt.savefig('../steps/mutations/D_escape.png', dpi=300)
+plt.savefig('../steps/mutations/D_escape.pdf')
 
 
 ###
@@ -273,7 +273,7 @@ plt.bar([(x/10)+0.005 for x in range(0,10)], freq, width=0.09, align="edge", ec=
 plt.ylim(0,0.7)
 plt.text(0.4,0.6,str(hist.sum())+" mutations")
 plt.title('non-escape M')
-plt.savefig('../steps/mutations/M_non_escape.png', dpi=300)
+plt.savefig('../steps/mutations/M_non_escape.pdf')
 
 
 hist, edges = np.histogram(df1.FREQ, [x/10 for x in range(0,11)])
@@ -283,7 +283,7 @@ plt.bar([(x/10)+0.005 for x in range(0,10)], freq, width=0.09, align="edge", ec=
 plt.ylim(0,0.7)
 plt.text(0.4,0.6,str(hist.sum())+" mutations")
 plt.title('escape M')
-plt.savefig('../steps/mutations/M_escape.png', dpi=300)
+plt.savefig('../steps/mutations/M_escape.pdf')
 
 
 oldhist, edges = np.histogram(df.FREQ, [x/10 for x in range(0,11)])
@@ -298,7 +298,7 @@ plt.ylim(0,0.7)
 hist, edges = np.histogram(df.FREQ, [x/10 for x in range(0,11)])
 plt.text(0.4,0.6,str(oldhist.sum())+" mutations")
 plt.title('non-escape M')
-plt.savefig('../steps/mutations/M_non_escape_cr3.png', dpi=300)
+plt.savefig('../steps/mutations/M_non_escape_cr3.pdf')
 
 
 
@@ -361,8 +361,8 @@ plt.ylabel('Number of phage mutations', fontsize=12)
 sns.despine()
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/phage_mutation/number_of_mutations_M.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S8_1.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/phage_mutation/number_of_mutations_M.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S7_1.pdf', bbox_inches='tight')
 
 
 cpt=[0]*5
@@ -413,8 +413,8 @@ plt.ylabel('Number of phage mutations', fontsize=12)
 sns.despine()
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/phage_mutation/number_of_mutations_P.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S8_2.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/phage_mutation/number_of_mutations_P.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S7_2.pdf', bbox_inches='tight')
 
 
-'''
+

@@ -6,6 +6,18 @@ Created on Tue Apr 13 12:04:24 2021
 @author: guillemet
 """
 
+import pandas as pd
+import os
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+import math
+import copy
+os.chdir('/home/guillemet/Documents/crispr/work/Martin/scripts')
+colors= sns.color_palette()
+bacter_all=pd.read_csv('../data/Bacteria_genos_filled.csv', sep=',', header=0, index_col=0)
+
+
 def fst_jk(toremove, bacter_all=bacter_all):
     #bacter_all=bacter_all.drop(columns=['Spacer'])
     bacter_all=bacter_all.drop_duplicates()
@@ -130,8 +142,8 @@ ax.get_legend().remove()
 sns.despine()
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Fst/D_bacteria_heterozygosities_CMD,jk.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S4_2.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Fst/D_bacteria_heterozygosities_CMD,jk.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S4_2.pdf', bbox_inches='tight')
 
 
 

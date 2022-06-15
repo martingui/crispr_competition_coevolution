@@ -152,8 +152,9 @@ pear=pearsonr(x=df.mean_freq, y=df.mean_variant)
 pear1=pear[1]
 #plt.text(0.03,0.8,'Pearson\'s r='+str(round(pear[0],2)), size=12)
 #plt.text(0.03,0.69,'p-value='+f"{pear1:.1E}", size=12)
-plt.savefig('../steps/spacers/means/W_mean_freq_log_newfig.png', dpi=300)
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S11_1.png', dpi=300, bbox_inches='tight')
+#plt.savefig('../steps/spacers/means/W_mean_freq_log_newfig.png', dpi=300)
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S9_1.pdf', bbox_inches='tight')
+
 
 
 means_control=control.groupby('spacer').freq.mean().sort_values()
@@ -185,8 +186,8 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 #plt.text(1e-7,0.8,'Pearson\'s r='+str(round(pear[0],2)), size=12)
 #plt.text(1e-7,0.69,'p-value='+str(round(pear[1], 2)), size=12)
-plt.savefig('../steps/spacers/means/W_mr_freq_newfig.png', dpi=300)
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S11_3.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/spacers/means/W_mr_freq_newfig.pdf')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S9_3.pdf', bbox_inches='tight')
 
 from scipy.stats import spearmanr
 from scipy.stats import pearsonr
@@ -297,8 +298,8 @@ pear=pearsonr(x=df.mean_freq, y=df.mean_variant)
 pear1=pear[1]
 #plt.text(0.11,0.8,'Pearson\'s r='+str(round(pear[0],2)), size=12)
 #plt.text(0.11,0.69,'p-value='+f"{pear1:.1E}", size=12)
-plt.savefig('../steps/spacers/means/R_mean_freq_log_newfig.png', dpi=300)
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S11_2.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/spacers/means/R_mean_freq_log_newfig.pdf')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S9_2.pdf', bbox_inches='tight')
 
 means_control=control.groupby('spacer').freq.mean().sort_values()
 df['mean_variant']=df.loc[:,['w1','w2','w3','w4']].apply(np.mean, axis=1)
@@ -325,8 +326,8 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 #plt.text(1e-7,0.8,'Pearson\'s r='+str(round(pear[0],2)), size=12)
 #plt.text(1e-7,0.69,'p-value='+str(round(pear[1], 2)), size=12)
-plt.savefig('../steps/spacers/means/R_mr_freq_newfig.png', dpi=300)
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S11_4.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/spacers/means/R_mr_freq_newfig.pdf')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S9_4.pdf', bbox_inches='tight')
 
 from scipy.stats import spearmanr
 from scipy.stats import pearsonr

@@ -21,7 +21,7 @@ bacter_all=pd.read_csv('../data/nBacteria_genos_filled.csv', sep=',', header=0)
 bacter_all=bacter_all.iloc[:,1:]
 phage_bacterR=pd.read_csv("../steps/df/phage_bacterR.csv")
 phage_bacterW=pd.read_csv("../steps/df/phage_bacterW.csv")
-phage_bacterC=pd.read_csv("../steps/df/phage_bacterC.csv")
+
 
 phage_bacter=pd.concat([phage_bacterR, phage_bacterW])
 
@@ -85,8 +85,8 @@ def diversity(bacter_all=bacter_all):
     sns.despine()
     plt.xticks(fontsize=12)
     plt.yticks(fontsize=12)
-    plt.savefig('../steps/Diversity/bacteria_diversity_CMD_ppt.png', dpi=300, bbox_inches='tight')
-    plt.savefig('/home/guillemet/Documents/crispr/final_figures/3.png', dpi=300, bbox_inches='tight')
+    plt.savefig('../steps/Diversity/bacteria_diversity_CMD_ppt.pdf', bbox_inches='tight')
+    plt.savefig('/home/guillemet/Documents/crispr/final_figures/3.pdf', bbox_inches='tight')
 
     return(df_fst_plot)
 
@@ -169,56 +169,10 @@ def bim_diversity(bacter_all=bacter_all):
     sns.despine()
     plt.xticks(fontsize=12)
     plt.yticks(fontsize=12)
-    plt.savefig('../steps/Diversity/bacteria_diversity_original_CMD_ppt.png', dpi=300, bbox_inches='tight')
-    plt.savefig('/home/guillemet/Documents/crispr/final_figures/S3.png', dpi=300, bbox_inches='tight')
+    plt.savefig('../steps/Diversity/bacteria_diversity_original_CMD_ppt.pdf', bbox_inches='tight')
+    plt.savefig('/home/guillemet/Documents/crispr/final_figures/S3.pdf', bbox_inches='tight')
 
     return(df_fst_plot)
 
 bim_diversity()
-
-
-def ci(p):
-    """
-    Return 2-sided symmetric confidence interval specified
-    by p.
-    """
-    u_pval = (1+p)/2.
-    l_pval = (1-u_pval)
-    l_indx = int(np.floor(n*l_pval))
-    u_indx = int(np.floor(n*u_pval))
-    return(simulations[l_indx],simulations[u_indx])
-
-def bootstrap(data, n=1000, func=np.mean):
-    """
-    Generate `n` bootstrap samples, evaluating `func`
-    at each resampling. `bootstrap` returns a function,
-    which can be called to obtain confidence intervals
-    of interest.
-    """
-    simulations = list()
-    sample_size = len(data)
-    xbar_init = np.mean(data)
-    for c in range(n):
-        itersample = np.random.choice(data, size=sample_size, replace=True)
-        simulations.append(func(itersample))
-    simulations.sort()
-
-    return(ci)
-
-for time in set(df.time):
-    for cond in set(df.cond):
-        boot=bootstrap(df.loc[(df.time==time)&(df.cond==cond),'fst'], n=5000)
-        cintervals = boot(.95)
-        print(time, cond)
-        print((cintervals[1] + cintervals[0])/2,(cintervals[1] - cintervals[0])/2)
-        print(cintervals)
-        
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
-for t in range(5):
-    print(t)
-    model = ols('fst ~ cond', data=df[df.time==t]).fit()
-    anova_table = sm.stats.anova_lm(model, typ=2)
-    print(anova_table)
 

@@ -218,7 +218,7 @@ plt.xlabel("Days")
 plt.legend(loc='upper left')
 plt.title("Spatial adaptation in M populations")
 plt.xticks(np.arange(0, 5, step=1))
-#plt.savefig('../steps/Adaptation/spatial_adaptation_M.png', dpi=300)
+#plt.savefig('../steps/Adaptation/spatial_adaptation_M.pdf')
 
 plt.figure()
 sns.lineplot(x=dfr_spatial.times, y=dfr_spatial.value, hue=dfr_spatial["where"])
@@ -228,7 +228,7 @@ plt.xlabel("Days")
 plt.legend(loc='upper left')
 plt.title("Spatial adaptation in D populations")
 plt.xticks(np.arange(0, 5, step=1))
-#plt.savefig('../steps/Adaptation/spatial_adaptation_D.png', dpi=300)
+#plt.savefig('../steps/Adaptation/spatial_adaptation_D.pdf')
 
 df_spatialr=copy.deepcopy(dfr_spatial.loc[dfr_spatial['where']=='here'])
 df_spatialr=df_spatialr.drop(columns=['where'])
@@ -268,8 +268,8 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 fig=plt.gcf()
 plt.subplots_adjust(left=0.151)
-plt.savefig('../steps/Adaptation/spatial_adaptation_diff_ppt.png', dpi=300)
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/6_1.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Adaptation/spatial_adaptation_diff_ppt.pdf')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/6_1.pdf', bbox_inches='tight')
 
 
 

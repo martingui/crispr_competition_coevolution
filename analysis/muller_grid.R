@@ -279,7 +279,7 @@ for (r in c('W1','W2','W3','W4','W5','W6','W7','W8')){
   }
 }
 
-pdf(paste0("../steps/muller/multi_wa.pdf"),width = 6, height = 9)
+pdf(paste0("../steps/muller/B.pdf"),width = 6, height = 9)
 grid.arrange(myplots[[1]], myplots[[2]], myplots[[3]], myplots[[4]], myplots[[5]], myplots[[6]], myplots[[7]], myplots[[8]],  ncol=2, nrow = 4)
 dev.off()
 
@@ -563,9 +563,9 @@ for (r in c('R1','R2','R3','R4','R5','R6','R7','R8')){
   }
 }
 
-#pdf(paste0("../steps/muller/C.pdf"),width = 6, height = 9)
+pdf(paste0("../steps/muller/C.pdf"),width = 6, height = 9)
 grid.arrange(myplots[[1]], myplots[[2]], myplots[[3]], myplots[[4]], myplots[[5]], myplots[[6]], myplots[[7]], myplots[[8]],  ncol=2, nrow = 4)
-#dev.off()
+dev.off()
 
 
 
@@ -834,9 +834,9 @@ for (r in c('C1','C2','C3','C4','C5','C6','C7')){
 }
 
 p1 <- ggplot() + theme_void()
-#pdf(paste0("../steps/muller/A.pdf"),width = 6, height = 9)
+pdf(paste0("../steps/muller/A.pdf"),width = 6, height = 9)
 grid.arrange(p1,myplots[[1]], myplots[[2]], myplots[[3]], myplots[[4]], myplots[[5]], myplots[[6]], myplots[[7]],  ncol=2, nrow = 4)
-#dev.off()
+dev.off()
 
 
 

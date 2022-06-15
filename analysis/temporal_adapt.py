@@ -127,8 +127,8 @@ plt.ylabel('Bacteria time (Days)', fontsize=12)
 plt.xlabel('Phages time (Days)', fontsize=12)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Adaptation/temporal/heatmap_ppt_D_no_linkage.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S9_2.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Adaptation/temporal/heatmap_ppt_D_no_linkage.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S8_2.pdf', bbox_inches='tight')
 plt.figure(figsize=(6.3,5))
 sns.heatmap(mat_meanw, vmin=0, vmax=0.65)
 ax=plt.gca()
@@ -137,8 +137,8 @@ plt.ylabel('Bacteria time (Days)', fontsize=12)
 plt.xlabel('Phages time (Days)', fontsize=12)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Adaptation/temporal/heatmap_ppt_M_no_linkage.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S9_1.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Adaptation/temporal/heatmap_ppt_M_no_linkage.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S8_1.pdf', bbox_inches='tight')
 
 all_df=pd.DataFrame()
 for rep in ['W1','W2','W3','W4','W5','W6','W7','W8']:
@@ -177,8 +177,8 @@ plt.ylabel('Bacteria time (Days)', fontsize=12)
 plt.xlabel('Phages time (Days)', fontsize=12)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Adaptation/temporal/heatmap_nocr3_ppt_D_no_linkage.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S9_4.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Adaptation/temporal/heatmap_nocr3_ppt_D_no_linkage.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S8_4.pdf', bbox_inches='tight')
 
 plt.figure(figsize=(6.3,5))
 sns.heatmap(mat_meanw, vmin=0, vmax=0.65)
@@ -188,8 +188,8 @@ plt.ylabel('Bacteria time (Days)', fontsize=12)
 plt.xlabel('Phages time (Days)', fontsize=12)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Adaptation/temporal/heatmap_nocr3_ppt_M_no_linkage.png', dpi=300, bbox_inches='tight')
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/S9_3.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Adaptation/temporal/heatmap_nocr3_ppt_M_no_linkage.pdf', bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/S8_3.pdf', bbox_inches='tight')
 
 
 
@@ -222,8 +222,8 @@ for child in ax.findobj(PolyCollection):
 sns.despine()
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-plt.savefig('../steps/Adaptation/temporal/aadaptation_papier_nolinkage.png', dpi=300)
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/6_2.png', dpi=300, bbox_inches='tight')
+plt.savefig('../steps/Adaptation/temporal/aadaptation_papier_nolinkage.pdf')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/6_2.pdf', bbox_inches='tight')
 
 
 
@@ -234,7 +234,7 @@ plt.xlabel('Time delay between bacteria and phage (days)', fontsize=12)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 sns.despine()
-plt.savefig('/home/guillemet/Documents/crispr/final_figures/aaaa6_2.png', dpi=300, bbox_inches='tight')
+plt.savefig('/home/guillemet/Documents/crispr/final_figures/aaaa6_2.pdf', bbox_inches='tight')
 
 
 

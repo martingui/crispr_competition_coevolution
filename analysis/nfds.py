@@ -77,14 +77,14 @@ def growth_reg_03_genotype(phage_bacter,title):
     plt.yticks(fontsize=12)
     plt.tick_params(axis='x', bottom=True)
     plt.tick_params(left=True)
-    plt.savefig('../steps/Regression-NFDS/genotype_'+title+'_ppt.png', dpi=300, bbox_inches='tight')
+    plt.savefig('../steps/Regression-NFDS/genotype_'+title+'_ppt.pdf', bbox_inches='tight')
     if title=='C':
         num=1
     elif title=="W":
         num=2
     elif title=='R':
         num=3
-    plt.savefig('/home/guillemet/Documents/crispr/final_figures/5_'+str(num)+'.png', dpi=300, bbox_inches='tight')
+    plt.savefig('/home/guillemet/Documents/crispr/final_figures/5_'+str(num)+'.pdf', bbox_inches='tight')
     plt.show()
     return
 

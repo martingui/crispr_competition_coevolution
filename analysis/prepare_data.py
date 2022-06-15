@@ -156,6 +156,10 @@ phage_bacterW=pd.concat([make_spacer_variant_table('W1'),
                         make_spacer_variant_table('W7'),
                         make_spacer_variant_table('W8')], ignore_index=True)
 
+phage_bacterW.to_csv('../steps/df/phage_bacterW.csv')
+
+
+
 phage_bacterR=pd.concat([make_spacer_variant_table('R1'),
                         make_spacer_variant_table('R2'),
                         make_spacer_variant_table('R3'),
@@ -165,9 +169,13 @@ phage_bacterR=pd.concat([make_spacer_variant_table('R1'),
                         make_spacer_variant_table('R7'),
                         make_spacer_variant_table('R8')], ignore_index=True)
 
+phage_bacterR.to_csv('../steps/df/phage_bacterR.csv')
 
 
-phage_bacterC=pd.read_csv('../data/Bacteria_genos.csv')
+
+
+
+phage_bacterC=pd.read_csv('../data/Bacteria_genos_filled.csv')
 phage_bacterC=phage_bacterC[phage_bacterC.Cond=='C']
 phage_bacterC=fill_bacter_all(phage_bacterC)
 phage_bacterC.columns=['genotype', 'freq','rep','time','spacer']
@@ -176,5 +184,7 @@ for geno in set(phage_bacterC.genotype):
     for t in set(phage_bacterC.time):
         meanf=phage_bacterC[(phage_bacterC.genotype==geno) & (phage_bacterC.time==t)].freq.mean()
         phage_bacterC_mean.loc[len(phage_bacterC_mean)]=[geno,meanf,t,phage_bacterC[phage_bacterC.genotype==geno].spacer.iloc[0]]
+phage_bacterC.to_csv('../steps/df/phage_bacterC.csv')
     
+  
 phage_bacter=pd.concat([phage_bacterR, phage_bacterW])

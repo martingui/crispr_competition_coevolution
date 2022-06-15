@@ -20,6 +20,152 @@ colors= sns.color_palette()
 #########frequency of mutation in protospacer
 
 
+colors= sns.color_palette()
+
+bacter_all=pd.read_csv('../data/nBacteria_genos_filled.csv', sep=',', header=0) 
+bacter_all=bacter_all.iloc[:,1:]
+spacers=[31149,1209,971,25461,7037,27013,34608,31065,31725,21039,24343,3233,29998,23084,16236,30386]
+os.chdir('/home/guillemet/Documents/crispr/work/Martin/scripts')
+import Bio
+import re
+from Bio import SeqIO
+record = SeqIO.read("../data/TheOneWeUse_T0.fasta", "fasta")
+p=18
+gensize=34704
+
+
+windows3=[]
+pattern=re.compile('[A-Z][G][G][A-Z][G]')
+for m in pattern.finditer(str(record.seq)):
+    windows3+=[[m.start(), m.start()+2*p]]
+    
+    
+pattern=re.compile('[A-Z][G][G][A-Z][G]')
+for m in pattern.finditer(str(record.seq.reverse_complement())):
+    windows3+=[[len(record.seq)-(m.start()+2*p), len(record.seq)-m.start()]]
+    
+    
+    
+phages_read=pd.DataFrame()
+for i in ['W1','W2','W3','W4','W5','W6','W7','W8','R1','R2','R3','R4','R5','R6','R7','R8']:
+    temp=pd.read_csv('../data/FreeBayes/'+i[0]+"_seq/"+i+"_data.csv", delimiter="\t")
+    temp['rep']=i
+    phages_read=pd.concat([phages_read, temp])
+phages_read.TIME=phages_read.TIME.apply(lambda x: x if 'R' not in x else 'T'+x[1])
+phages_read.TIME=phages_read.TIME.apply(lambda x: int(x[1]))
+phages_read=phages_read.reset_index(drop=True)
+                
+pam1=pd.read_csv("../../Aarhus/data/PAM_positions.csv")
+windows1=[]
+for i in pam1.index:
+    windows1+=[[pam1['escape_start'].iloc[i], pam1['escape_end'].iloc[i]]]
+
+phages_pamall=pd.DataFrame(columns=phages_read.columns)
+already=[]
+for i in phages_read.index:
+    pos=phages_read['POS'].iloc[i]
+    for window in windows1+windows3:
+        if pos>=window[0] and pos <= window[1]:
+            if i not in already:
+                phages_pamall.loc[len(phages_pamall)]=phages_read.iloc[i,:]
+                already+=[i]
+  
+phages_pam3=pd.DataFrame(columns=phages_read.columns)
+already=[]
+for i in phages_read.index:
+    pos=phages_read['POS'].iloc[i]
+    for window in windows3:
+        if pos>=window[0] and pos <= window[1]:
+            if i not in already:
+                phages_pam3.loc[len(phages_pam3)]=phages_read.iloc[i,:]
+                already+=[i]
+                
+phages_pam1=pd.DataFrame(columns=phages_read.columns)
+already=[]
+for i in phages_read.index:
+    pos=phages_read['POS'].iloc[i]
+    for window in windows1:
+        if pos>=window[0] and pos <= window[1]:
+            if i not in already:
+                phages_pam1.loc[len(phages_pam1)]=phages_read.iloc[i,:]
+                already+=[i]
+  
+                
+  
+    
+  
+    
+print('taille genome', len(record.seq))
+  
+allpos=[]
+for window in windows1+windows3:
+    for i in range(window[0], window[1]+1):
+        allpos+=[i]
+print('CR13 ', len(set(allpos))/len(record.seq))
+
+
+allpos=[]
+for window in windows1:
+    for i in range(window[0], window[1]+1):
+        allpos+=[i]
+print('CR1 ',len(set(allpos))/len(record.seq))
+
+
+allpos=[]
+for window in windows3:
+    for i in range(window[0], window[1]+1):
+        allpos+=[i]
+print('CR3 ',len(set(allpos))/len(record.seq))
+
+                
+
+print(len(set(phages_pam1.loc[phages_pam1.FREQ>0.5].POS)))
+print(len(set(phages_pam3.loc[phages_pam3.FREQ>0.5].POS)))
+print(len(set(phages_pamall.loc[phages_pamall.FREQ>0.5].POS)))
+print(len(set(phages_read.loc[phages_read.FREQ>0.5].POS)))
+
+
+p3=set(phages_pam3.loc[phages_pam3.FREQ>0.5].POS)
+p1=set(phages_pam1.loc[phages_pam1.FREQ>0.5].POS)
+
+
+print([x for x in p3 if x not in p1])
+
+
+mid_windows1=[(x[1]+x[0])/2 for x in windows1]
+
+xwin=[]
+ywin=[]
+pas=2000
+for i in range(0, gensize, pas):
+    xwin+=[i + pas/2]
+    ywin+=[sum([1 for x in mid_windows1 if (x>i and x<i+pas)])]
+ywin[-1]=(ywin[-1]*pas)/(gensize%pas)    
+
+
+
+def center_bim(x,gsize=gensize):
+    gsize=gsize/1000
+    for i in range(len(x)):
+        if x[i] < 31.725-gsize/2:
+            x[i]+=gsize
+    return x
+
+windf=pd.DataFrame({'x':[x/1000 for x in xwin], 'y':ywin})
+
+
+
+
+
+
+windf['center_x']=center_bim(windf.x.tolist())
+windf['center_x']=windf['center_x']-(31.725-gensize/2000)
+
+
+
+#####################################
+
+
 #### R
 
 dfpam=pd.read_csv("../../Aarhus/data/PAM_positions.csv")
@@ -158,19 +304,20 @@ for dfs in [[dfmutsw, dfmuts0w, 'W', colors[1]], [dfmutsr, dfmuts0r, 'R', colors
     dfnewmuts=dfnewmuts.drop_duplicates(subset=['ALT','REF','POS'])
     dfnewmuts=dfnewmuts.loc[dfnewmuts.AO>5]
     
-    fig, ax=plt.subplots()
+    plt.figure()
+    ax=plt.gca()
     sns.set_style('ticks')
     sns.histplot(data=dfnewmuts, x='POS', kde=False, bins=range(0,37,2), color=dfs[3], ax=ax, alpha=0.35)
     sns.histplot(data=dfnewmuts.loc[dfnewmuts.escape_pos>=-0.1], x='POS', kde=False, bins=range(0,37,2), color=dfs[3], ax=ax)
     sns.set_style('ticks')
-    plt.plot(windf.center_x, windf.y, 'k--', linewidth=1)
+    plt.plot(windf.x, windf.y, 'k--', linewidth=1)
     plt.ylabel('Number of mutations per 2-kb', fontsize=12)
     plt.xlabel('Position in the phage genome (kb)', fontsize=12)
     plt.xticks(fontsize=12)
     plt.yticks(fontsize=12)
     sns.despine()
-    plt.savefig('../steps/phage_mutation/along_genome_'+dfs[2]+'.png', dpi=300, bbox_inches='tight')
-    plt.savefig('/home/guillemet/Documents/crispr/final_figures/S5_'+str(x)+'.png', dpi=300, bbox_inches='tight')
+    plt.savefig('../steps/phage_mutation/along_genome_'+dfs[2]+'.pdf', bbox_inches='tight')
+    plt.savefig('/home/guillemet/Documents/crispr/final_figures/S5_'+str(x)+'.pdf', bbox_inches='tight')
     
     plt.figure()
     sns.set_style('ticks')
@@ -185,8 +332,8 @@ for dfs in [[dfmutsw, dfmuts0w, 'W', colors[1]], [dfmutsr, dfmuts0r, 'R', colors
     plt.ylim(-0.8,15)
     plt.xticks(fontsize=12)
     plt.yticks(fontsize=12)
-    plt.savefig('../steps/phage_mutation/along_protospacer_'+dfs[2]+'.png', dpi=300, bbox_inches='tight')
-    plt.savefig('/home/guillemet/Documents/crispr/final_figures/S6_'+str(x)+'.png', dpi=300, bbox_inches='tight')
+    plt.savefig('../steps/phage_mutation/along_protospacer_'+dfs[2]+'.pdf', bbox_inches='tight')
+    plt.savefig('/home/guillemet/Documents/crispr/final_figures/S5_'+str(x+2)+'.pdf', bbox_inches='tight')
     x=2
 
     
