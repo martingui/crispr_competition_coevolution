@@ -15,6 +15,7 @@ Files:
 * README.md
 * requirements_py-env.txt
 
+* Escape_regions.R
 * vcf_parser3.py
 * vcf_to_csv.py
 * ReadData_Functions.R
